@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.4.1.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    <title>unit Convertor</title>
+    <style>
+        p a{
+  color:#000;
+  font-weight:400;
+}
+    </style>
+    
+</head>
+<body>
+      <h1 class="text-center mx-auto">Converters</h1>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+          <button type="button" class="btn btn-primary m-auto" onclick="UnitConverters('Length')">Length</button>
+          <button type="button" class="btn btn-secondary m-auto" onclick="UnitConverters('Weight')">Weight</button>
+          <button type="button" class="btn btn-success m-auto" onclick="UnitConverters('Speed')">Speed</button>
+          <button type="button" class="btn btn-danger m-auto" onclick="UnitConverters('Temperature')">Temperature</button>
+        </nav>
+      </div>
+      <!-- Length -->
+      <div class="container  unitName" id="Length">
+        <div class="col-md-12 p-5">
+          <div class="alert alert-primary" role="alert" style="text-align: center;">
+            Length Converter
+          </div>
+          <button onclick="clearLength()" value="clear" class="btn btn-primary" style="margin-left: 450px;">Clear / Reset </button>
+        </div>
+        <form>
+          <p class="lead" style="text-align: center;font-weight: bold;">Type a value in any of the fields to convert between Length measurements:</p>
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+              <label for="ipFeet" style="font-weight:bold;">Feet</label>
+              <input type="number" class="form-control" id="ipFeet" placeholder="Feet"
+                oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="ipMeters" style="font-weight:bold;">Meters</label>
+              <input type="number" class="form-control" id="ipMeters" placeholder="Meters"
+                oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ipInches" style="font-weight:bold;">Inches</label>
+              <input type="number" class="form-control" id="ipInches" placeholder="Inches"
+                oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ipKilometers" style="font-weight:bold;">Kilometers</label>
+              <input type="number" class="form-control" id="ipKilometers" placeholder="Kilometers"
+                oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+            </div>
+          </div>
+        </form>
+      </div>
+    
+      <!-- Speed -->
+    
+      <div class="container unitName" id="Speed" style="display:none;">
+        <div class="col-md-12 p-5">
+          <div class="alert alert-success" role="alert" style="text-align: center;">
+            Speed Converter
+          </div>
+          <button onclick="clearSpeed()" value="clear" class="btn btn-primary" style="margin-left: 450px;">Clear / Reset </button>
+        </div>
+        <form>
+          <p class="lead" style="text-align: center;font-weight: bold;">Type a value in any of the fields to convert between Speed measurements:</p>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="ipMPH" style="font-weight:bold;">MPH</label>
+              <input type="number" class="form-control" id="ipMPH" placeholder="MPH"
+                oninput="speedConverter(this.id,this.value)" onchange="speedConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ipKPH" style="font-weight:bold;">KPH</label>
+              <input type="number" class="form-control" id="ipKPH" placeholder="KPH"
+                oninput="speedConverter(this.id,this.value)" onchange="speedConverter(this.id,this.value)">
+            </div>
+          </div>
+        </form>
+      </div>
+    
+      <!-- Temperature -->
+    
+      <div class="container unitName" id="Temperature" style="display:none;">
+    
+        <div class="col-md-12 p-5">
+          <div class="alert alert-danger" role="alert" style="text-align: center;">
+            Temperature Converter
+          </div>
+          <button onclick="clearTemperature()" value="clear" class="btn btn-primary" style="margin-left: 450px;">Clear / Reset </button>
+        </div>
+        <form>
+          <p class="lead" style="text-align: center;font-weight: bold;">Type a value in any of the fields to convert between Temperature measurements:</p>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="ipFahrenheit" style="font-weight:bold;">Fahrenheit</label>
+              <input type="number" class="form-control" id="ipFahrenheit" placeholder="Fahrenheit"
+                oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ipCelsius" style="font-weight:bold;">Celsius</label>
+              <input type="number" class="form-control" id="ipCelsius" placeholder="Celsius"
+                oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="ipKelvin" style="font-weight:bold;">Kelvin</label>
+              <input type="number" class="form-control" id="ipKelvin" placeholder="Kelvin"
+                oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)">
+            </div>
+          </div>
+    
+        </form>
+      </div>
+    
+      <!--  Weight  -->
+    
+      <div class="container  unitName" id="Weight" style="display:none;">
+        <div class="col-md-12 p-5">
+          <div class="alert alert-secondary" role="alert" style="text-align: center;">
+            Weight Converter
+          </div>
+          <button onclick="clearWeight()" value="clear" class="btn btn-primary" style="margin-left: 450px;">Clear / Reset </button>
+        </div>
+        <form>
+          <p class="lead" style="text-align: center;font-weight: bold;">Type a value in any of the fields to convert between Weight measurements: <p></p>
+          </p>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="ipGrams" style="font-weight:bold;">Grams</label>
+              <input type="number" class="form-control" id="ipGrams" placeholder="Grams"
+                oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ipKilograms" style="font-weight:bold;">Kilograms</label>
+              <input type="number" class="form-control" id="ipKilograms" placeholder="Kilograms"
+                oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="ipPounds" style="font-weight:bold">Pounds</label>
+              <input type="number" class="form-control" id="ipPounds" placeholder="Pounds"
+                oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="ipOunces" style="font-weight:bold">Ounces</label>
+              <input type="number" class="form-control" id="ipOunces" placeholder="Ounces"
+                oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <script src="script.js"></script> 
+</body>
+</html>
